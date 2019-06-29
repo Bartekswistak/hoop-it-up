@@ -11,6 +11,7 @@ gem 'sqlite3'
 gem 'puma', '~> 3.11'
 gem 'foreman', '~> 0.82.0'
 gem 'devise'
+gem 'react-rails'
 
 # Build JSON APIs with ease. Read more: https://github.com/rails/jbuilder
 # gem 'jbuilder', '~> 2.5'
