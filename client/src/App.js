@@ -1,25 +1,26 @@
 import React from 'react';
-import logo from './logo.svg';
+import {Route, NavLink, HashRouter} from "react-router-dom";
 import './App.css';
+import Login from "./components/Login";
+import Signup from "./components/Signup";
+
 
 function App() {
   return (
+    <HashRouter>
     <div className="App">
       <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
+        <h1>
+          Welcome to Hoop It Up!
+        </h1>
+          <h3><NavLink to="/login">Log In</NavLink> Or <NavLink to="/signup">Sign Up</NavLink></h3>
+            <div id="content">
+              <Route path="/login" component={Login}/>
+              <Route path="/signup" component={Signup}/>
+            </div>
       </header>
     </div>
+    </HashRouter>
   );
 }
 
