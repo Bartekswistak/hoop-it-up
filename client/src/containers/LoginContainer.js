@@ -9,7 +9,7 @@ class LoginContainer extends React.Component {
   
       if (props.user) {
         alert("You can't login if you are logged in!")
-        props.history.push('/home')
+        props.history.push('/')
       }
     }
   

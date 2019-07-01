@@ -11,6 +11,7 @@ function App() {
     <HashRouter>
     <div className="App">
       <header className="App-header">
+      <NavLink to="/">Home</NavLink>
         <h1>
           Welcome to Hoop It Up!
         </h1>

@@ -10,15 +10,22 @@ class Login extends React.Component {
     };
   }
 
-  handleChange = event => {
-    this.setState({
-      [event.target.name]: event.target.value
-    })
+  handleChange = e => {
+    var name = e.target.name;
+    var obj = {};
+      obj[name] = e.target.value;
+   console.log(obj);
   }
 
   handleSubmit = event => {
     event.preventDefault()
   }
+
+  // function handleFormSubmit() {
+  //   var appointment = {title: this.state.title, appt_time: this.state.appt_time}
+  //   $.post('/appointments',
+  //     {appointment: appointment})
+  // },
 
   render() {
     return (
