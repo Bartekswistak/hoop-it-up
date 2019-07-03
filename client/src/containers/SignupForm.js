@@ -15,8 +15,6 @@ class SignupForm extends React.Component {
     var obj = {};
       obj[name] = e.target.value;
    console.log(obj);
-   console.log(this.props.onUserInput);
-      this.props.onUserInput(obj);
   }
 
   handleSubmit = event => {
