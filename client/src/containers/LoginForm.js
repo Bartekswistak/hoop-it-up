@@ -14,7 +14,7 @@ class LoginForm extends React.Component {
     var name = e.target.name;
     var obj = {};
       obj[name] = e.target.value;
-   console.log(obj);
+  //  console.log(obj);
   }
 
   handleSubmit = event => {
