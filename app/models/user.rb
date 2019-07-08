@@ -7,5 +7,5 @@ class User < ApplicationRecord
          validates :name, uniqueness: true
          validates :name, presence: true
 
-         has_one :player
+         has_one :playercard
 end

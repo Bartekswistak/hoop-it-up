@@ -1,3 +1,6 @@
+module Api
+module V1
+
 class UsersController < ApplicationController
 
     def index
@@ -7,6 +10,7 @@ class UsersController < ApplicationController
     
     def new
         @user = User.new
+        render json: @user
     end
     
     def show
@@ -36,4 +40,6 @@ class UsersController < ApplicationController
         params.require(:user).permit(:name, :encrypted_password)
     end
     
+    end
+end
 end
