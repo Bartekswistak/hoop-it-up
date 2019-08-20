@@ -1,9 +1,8 @@
 Rails.application.routes.draw do
-  root to: "users#index"
+  root to: "api/v1/users#index"
 
   devise_for :users
   
-
   namespace :api do
     namespace :v1 do
       resources :playercard 

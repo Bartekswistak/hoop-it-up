@@ -1,25 +1,43 @@
 import React from "react";
+import $ from 'jquery';
 
 class LoginForm extends React.Component {
-  constructor() {
-    super();
+  constructor(props) {
+    super(props);
 
     this.state = {
-      username: "",
-      password: ""
+      user : {
+        name: "",
+        password: "",
+      }
     };
+    this.handleChange = this.handleChange.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
   }
 
-  handleChange = e => {
-    var name = e.target.name;
-    var obj = {};
-      obj[name] = e.target.value;
-  //  console.log(obj);
+  handleChange = event => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
   }
 
   handleSubmit = event => {
     event.preventDefault()
+    const user = {name: this.state.name, password: this.state.password};
+  
+    $.ajax({
+      url:'http://localhost:3001/api/v1/users',
+      dataType: 'json',
+      type: 'GET',
+      data: {user: user},
+      success: function(data) {
+        // this.setState({data: user})
+      }
+    })
+    console.log(user)
+    alert("Welcome " + user.name)
   }
+
 
   render() {
     return (
@@ -27,7 +45,7 @@ class LoginForm extends React.Component {
         <div>
           <label>
             Username
-            <input id="username" name="username" type="text" onChange={this.handleChange} />
+            <input id="name" name="name" type="text" onChange={this.handleChange} />
           </label>
         </div>
         <div>
