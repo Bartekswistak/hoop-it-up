@@ -43,6 +43,14 @@ class SignupForm extends React.Component {
     console.log(user)
   }
 
+  // componentWillUnmount(){
+  //   this.setState(
+  //     this.state.email = "",
+  //     this.state.name = "",
+  //     this.state.password = "" 
+  //   )
+  // }
+  
   //TO DO 
   // -write componentDidMount and componentWillUnmount functions here for the form to go away upon submission
   // -encrypt the password?
