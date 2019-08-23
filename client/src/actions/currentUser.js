@@ -62,7 +62,7 @@ export const getCurrentUser = () => {
         if(user.error) {
             alert(user.error)
         } else {
-            // dispatch(setCurrentUser(user.data))
+             dispatch(setCurrentUser(user.data))
             // dispatch(getMyEntries())
         }
     }).catch(console.log)
@@ -74,6 +74,7 @@ export const signup = (credentials, history) => {
        const userInfo = {
            user: credentials
        }
+       debugger
         return fetch('http://localhost:3000/api/v1/signup', {
             credentials: "include",
             method: "POST",
@@ -86,7 +87,7 @@ export const signup = (credentials, history) => {
                if(user.error) {
                  alert(user.error)
                } else {
-                // dispatch(setCurrentUser(user.data))
+                dispatch(setCurrentUser(user.data))
                 dispatch(resetSignupForm())
                 history.push('/')
             }

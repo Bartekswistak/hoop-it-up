@@ -4,6 +4,5 @@ class User < ApplicationRecord
         #             :recoverable, :rememberable, :trackable, :validatable,
         #             :confirmable, :omniauthable
 
-        attr_accessor :encrypted_password
-
+        has_secure_password
 end

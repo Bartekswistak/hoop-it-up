@@ -1,5 +1,4 @@
 Rails.application.routes.draw do
-  root to: "api/v1/users#index"
 
   get 'api/v1/get_current_user' => 'api/v1/sessions#get_current_user'
   post 'api/v1/login' => 'api/v1/sessions#create'
