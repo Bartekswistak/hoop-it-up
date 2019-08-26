@@ -8,11 +8,11 @@
 
 users = User.create([
     {
-    name:'bartek',
+    username:'bartek',
     email: "bartek@gmail.com",
     password: 'password'},
     {
-    name:'nikki',
+    username:'nikki',
     email: "nikki@gmail.com",
     password: 'password'
 }
