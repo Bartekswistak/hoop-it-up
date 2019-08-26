@@ -29,7 +29,6 @@ render(){
           <header className="App-header">
         <Router>
         <Home/>
-
           <Route exact path='/' render={(props) => loggedIn ? <PlayerCardContainer {...props}/> : <AppHeader {...props}/>}/>
           <Route exact path='/login' component={Login}/> 
           <Route exact path='/signup' render={(props) => <Signup history={props.history}/>}/> 

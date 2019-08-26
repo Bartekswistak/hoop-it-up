@@ -15,7 +15,7 @@ export const clearCurrentUser = () => {
 }
 
 export const login = (credentials, history) => {
-     debugger
+    //  debugger
     return dispatch => {
         return fetch('http://localhost:3000/api/v1/login', {
             credentials: "include",
