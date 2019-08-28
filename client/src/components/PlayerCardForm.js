@@ -5,8 +5,18 @@ import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
 const PlayerCardForm= ({formData, history, updatePlayerCardForm, userId, handleSubmit}) => {
+  
+  const initialState = {
+    playerNickname: '',
+    playerHeightFeet: '',
+    playerHeightInches: '',
+    playerWeight: '',
+    playerAge: '',
+    playerFavPlayer: ''
+}
+  // var formData = {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer}
 
-    var formData = {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer}
+
 
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -20,18 +30,18 @@ const PlayerCardForm= ({formData, history, updatePlayerCardForm, userId, handleS
       <Form onSubmit={event => handleSubmit(event, formData, userId)}>
         <Form.Group controlId="formPlayerNickname">
           <Form.Label>What is your nickname on the court?</Form.Label>
-            <Form.Control type="textarea" name="playerNickname" value={playerNickname} onChange={handleChange}/><br/>
+            <Form.Control type="textarea" name="playerNickname"  value={playerNickname} onChange={handleChange}/><br/>
          </Form.Group>
 
         <Form.Group controlId="formPlayerHeight">
            <Form.Label>How tall are you?</Form.Label>
-              <Form.Control type="textarea" name="playerHeightFeet" value={playerHeightFeet} onChange={handleChange}/><br/>
-              <Form.Control type="textarea" name="playerHeightInches" value={playerHeightInches} onChange={handleChange}/><br/>
+              <Form.Control type="textarea" name="playerHeightFeet" value={playerHeightFeet} onChange={handleChange}/> Feet<br/>
+              <Form.Control type="textarea" name="playerHeightInches" value={playerHeightInches} onChange={handleChange}/>Inches<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerWeight">
          <Form.Label>How much do you weigh?</Form.Label>
-           <Form.Control type="textarea" name="playerWeight" value={playerWeight} onChange={handleChange}/><br/>
+           <Form.Control type="textarea" name="playerWeight" value={playerWeight} onChange={handleChange}/>Lbs<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerAge">
@@ -43,6 +53,7 @@ const PlayerCardForm= ({formData, history, updatePlayerCardForm, userId, handleS
          <Form.Label>Who is your favorite basketball player?</Form.Label>
            <Form.Control type="textarea" name="playerFavPlayer" value={playerFavPlayer} onChange={handleChange}/><br/>
         </Form.Group>
+        <Form.Control type="submit" value={"Create Player Card"} />
       </Form>
     </Container> 
      )};

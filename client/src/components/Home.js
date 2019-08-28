@@ -4,17 +4,14 @@ import Container from 'react-bootstrap/Container';
 
 const Home = () => {
 
-    return (
-        <div>
-          <Container className="home">
-          <h3><NavLink to="/">Home</NavLink></h3>
+    return ( 
+        <Container className="home">
+            <NavLink to="/">Home </NavLink> 
             <h1>Welcome to Hoop it Up</h1>
-            <p>Finding quality pickup games in your area since 2019</p> 
+            <p>Finding quality pickup games in your area since 2019</p>             
             <br/>
-           </Container>
-       </div>
+        </Container>
     )
 }
-
 
 export default Home

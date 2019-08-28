@@ -7,14 +7,10 @@ import {BrowserRouter as Router, Route} from 'react-router-dom'
 import Login from "./components/Login"
 import Signup from "./components/Signup"
 import Home from './components/Home.js'
+import NavBar from './components/Navbar.js'
 import PlayerCardContainer from './containers/PlayerCardContainer'
 
-
-
-
-
 class App extends React.Component {
-
 
 componentDidMount() {
   this.props.getCurrentUser()
@@ -23,30 +19,27 @@ componentDidMount() {
 render(){
   const {loggedIn} = this.props
 
-  return (
-    <div>      
+    return (
         <div className="App">
-          <header className="App-header">
-        <Router>
-        <Home/>
-          <Route exact path='/' render={(props) => loggedIn ? <PlayerCardContainer {...props}/> : <AppHeader {...props}/>}/>
-          <Route exact path='/login' component={Login}/> 
-          <Route exact path='/signup' render={(props) => <Signup history={props.history}/>}/> 
-       </Router>
-       </header>
-     </div>
-    </div>
-  );
-}
+          <header className="App-header"> 
+            <Router>
+            <Home/>
+            {loggedIn ? <NavBar/> : null}
+              <Route exact path='/login' component={Login}/> 
+              <Route exact path='/signup' render={(props) => <Signup history={props.history}/>}/>   
+              <Route exact path='/' render={(props) => loggedIn ? <PlayerCardContainer {...props}/> : <AppHeader {...props}/>}/>         
+            </Router>
+          </header>
+        </div>
+    );
+  }
 }
 
 const mapStateToProps = (state) => {
   return {
-      loggedIn: !!state.currentUser,
-      // myEntries: state.myEntries
-     
+    loggedIn: !!state.currentUser,
+    // myEntries: state.myEntries    
   }
 }
-
 
 export default connect(mapStateToProps, {getCurrentUser})(App);
