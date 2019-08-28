@@ -13,12 +13,12 @@
 ActiveRecord::Schema.define(version: 2019_08_26_163547) do
 
   create_table "player_cards", force: :cascade do |t|
-    t.string "nickname"
-    t.integer "height_in_feet"
-    t.integer "height_in_inches"
-    t.integer "weight_in_lbs"
-    t.integer "age"
-    t.string "favorite_player"
+    t.string "player_nickname"
+    t.integer "player_height_in_feet"
+    t.integer "player_height_in_inches"
+    t.integer "player_weight"
+    t.integer "player_age"
+    t.string "player_fav_player"
   end
 
   create_table "users", force: :cascade do |t|
