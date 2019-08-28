@@ -1,8 +1,9 @@
 import React from 'react'
 import {connect} from 'react-redux'
 import Container from 'react-bootstrap/Container';
-// import PlayerCardForm from '../components/PlayerCardForm';
 import PlayerCard from '../components/PlayerCard'
+import PlayerCardForm from '../components/PlayerCardForm';
+
 
 const PlayerCardContainer = ({currentUser}) => {
 
@@ -10,7 +11,7 @@ const PlayerCardContainer = ({currentUser}) => {
   return (
     <Container>
       <h1>{currentUser.attributes.username}'s Player Card </h1>
-      <PlayerCard/>
+      <PlayerCardForm/>
     </Container>
   )
 }

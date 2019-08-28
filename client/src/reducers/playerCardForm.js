@@ -10,7 +10,7 @@ const initialState = {
 export default (state = initialState, action) => {
 
     switch(action.type){
-        case "UPDATE_PLAYERCARD_FORM":
+        case "UPDATE_PLAYERCARD":
             return{
                 ...state,
                 [action.formData.name]: action.formData.value

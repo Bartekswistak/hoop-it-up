@@ -4,19 +4,10 @@ import {updatePlayerCardForm} from '../actions/playerCardForm.js'
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-const PlayerCardForm= ({formData, history, updatePlayerCardForm, userId, handleSubmit}) => {
-  
-  const initialState = {
-    playerNickname: '',
-    playerHeightFeet: '',
-    playerHeightInches: '',
-    playerWeight: '',
-    playerAge: '',
-    playerFavPlayer: ''
-}
-  // var formData = {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer}
+const PlayerCardForm = ({formData, history, updatePlayerCardForm, userId, playercard, handleSubmit}) => {
 
-
+  const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
+  const playerCardId = playercard ? playercard.id : null
 
     const handleChange = (event) => {
         const {name, value} = event.target
@@ -61,8 +52,8 @@ const PlayerCardForm= ({formData, history, updatePlayerCardForm, userId, handleS
 const mapStateToProps = (state) => {
     const userId = state.currentUser ? state.currentUser.id : ""
     return {
-       formData: state.PlayerCardForm,
-        userId
+      formData: state.PlayerCardForm,
+      userId
     }
 }
 
