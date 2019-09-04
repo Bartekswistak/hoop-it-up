@@ -8,7 +8,7 @@ class Api::V1::SessionsController < ApplicationController
             render json: UserSerializer.new(@user)
        else
         render json: {
-            error: "Invalid Input"
+            error: "Invalid Name/Password"
         }
        end
     end
@@ -28,7 +28,7 @@ class Api::V1::SessionsController < ApplicationController
             render json: UserSerializer.new(current_user)
        else
         render json: {
-            error: "Not Logged In"
+            error: "Log In To Continue"
         }
        end
     end

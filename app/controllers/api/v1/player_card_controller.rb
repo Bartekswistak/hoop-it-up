@@ -1,6 +1,6 @@
-class Api::V1::PlayerCardController < ApplicationController
+    class Api::V1::PlayerCardController < ApplicationController
 
-    def index
+    def index      
         if logged_in?
         @playercard = current_user.playercard
         render json: PlayerCardSerializer.new(@playercard)
@@ -11,6 +11,7 @@ class Api::V1::PlayerCardController < ApplicationController
             }
         end
     end
+
 
     def create 
         @playercard = PlayerCard.new(playercard_params)

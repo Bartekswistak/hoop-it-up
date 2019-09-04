@@ -1,7 +1,7 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {createPlayerCard} from '../actions/myEntries.js'
-import PlayerCard from './PlayerCard.js';
+import {createPlayerCard} from '../actions/myPlayerCard.js'
+import PlayerCardForm from './PlayerCardForm.js';
 
 
 const NewPlayerCard = ({history, createPlayerCard}) => {
@@ -11,7 +11,7 @@ const NewPlayerCard = ({history, createPlayerCard}) => {
         createPlayerCard({formData, userId}, history)
     }
     
-    return <PlayerCard history={history} handleSubmit={handleSubmit}/>
+    return <PlayerCardForm history={history} handleSubmit={handleSubmit}/>
 }
 
 export default connect(null, {createPlayerCard})(NewPlayerCard)

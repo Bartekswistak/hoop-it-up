@@ -1,14 +1,15 @@
 import React from 'react';
 import './App.css';
-import AppHeader from "./components/AppHeader"
+import AppHeader from "./components/AppHeader.js"
 import {connect} from 'react-redux'
 import {getCurrentUser} from './actions/currentUser.js'
 import {BrowserRouter as Router, Route} from 'react-router-dom'
-import Login from "./components/Login"
-import Signup from "./components/Signup"
+import Login from "./components/Login.js"
+import Signup from "./components/Signup.js"
 import Home from './components/Home.js'
 import NavBar from './components/Navbar.js'
-import PlayerCardContainer from './containers/PlayerCardContainer'
+import NewPlayerCard from './components/NewPlayerCard.js'
+import MyPlayerCard from './components/MyPlayerCard.js'
 
 class App extends React.Component {
 
@@ -17,7 +18,7 @@ componentDidMount() {
 }
 
 render(){
-  const {loggedIn} = this.props
+  const {loggedIn, myPlayerCard} = this.props
 
     return (
         <div className="App">
@@ -27,7 +28,11 @@ render(){
             {loggedIn ? <NavBar/> : null}
               <Route exact path='/login' component={Login}/> 
               <Route exact path='/signup' render={(props) => <Signup history={props.history}/>}/>   
-              <Route exact path='/' render={(props) => loggedIn ? <PlayerCardContainer {...props}/> : <AppHeader {...props}/>}/>         
+              <Route exact path='/' render={(props) => loggedIn ? <NewPlayerCard {...props}/> : <AppHeader {...props}/>}/> 
+              {/* <Route exact path='/playercard/:id' render={props => {
+                  const playercard = MyPlayerCard.find(playercard => playercard.id === props.match.params.id)
+                  return <MyPlayerCard playercard={playercard} {...props}/> }
+              }/>         */}
             </Router>
           </header>
         </div>
@@ -38,7 +43,7 @@ render(){
 const mapStateToProps = (state) => {
   return {
     loggedIn: !!state.currentUser,
-    // myEntries: state.myEntries    
+    myPlayerCard: state.myPlayerCard    
   }
 }
 

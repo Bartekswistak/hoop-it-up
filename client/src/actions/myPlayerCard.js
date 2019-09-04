@@ -14,26 +14,10 @@ export const clearPlayerCard = () => {
 
 }
 
-// export const addEntry = (entry) => {
-    
-//     return {
-//         type: "ADD_ENTRY",
-//         entry
-//     }
-// }
-
-// export const deleteEntrySuccess = (entryId) => {
-    
-//     return {
-//         type: "DELETE_ENTRY_SUCCESS",
-//         entryId
-//     }
-// }
-
-export const updatePlayerCard = (playercard) => {
+export const addPlayerCard = (playercard) => {
     
     return {
-        type: "UPDATE_PLAYERCARD",
+        type: "ADD_PLAYERCARD",
         playercard
     }
 }
@@ -83,7 +67,7 @@ export const createPlayerCard = (playerCardData, history) => {
                 if (resp.error) {
                     alert(resp.error)
                 } else {
-                    // dispatch(addEntry(resp.data))
+                    dispatch(addPlayerCard(resp.data))
                     dispatch(resetPlayerCardForm())
                     history.push(`/playercard/${resp.data.id}`)
                  }
@@ -106,7 +90,7 @@ export const updatePlayerCard = (playerCardData, history) => {
                 user_id: playerCardData.userId
             }
         }
-        return fetch(`http://localhost:3000/api/v1/entries/${playerCardData.userId}`, {
+        return fetch(`http://localhost:3000/api/v1/playercard/${playerCardData.userId}`, {
             credentials: "include",
             method: "PATCH",
             headers: {
@@ -128,30 +112,3 @@ export const updatePlayerCard = (playerCardData, history) => {
     }
 
 }
-
-// export const deleteEntry = (entryId, history) => {
-//     return dispatch => {
-//         // console.log(entryId)
-//         return fetch(`http://localhost:3000/api/v1/entries/${entryId}`, {
-//             credentials: "include",
-//             method: "DELETE",
-//             headers: {
-//                 "Content-Type": 'application/json'
-//                 }   
-//             })
-//             .then(r => r.json())
-//             .then(resp => {
-//             if (resp.error) {
-//                 alert(resp.error)
-//             } else {
-//                 dispatch(deleteEntrySuccess(entryId))
-//                 history.push(`/entries`) 
-//                 // history.push(`/`)
-//                 }
-//             })
-//             .catch(console.log)
-        
-//     }
-
-
-// }

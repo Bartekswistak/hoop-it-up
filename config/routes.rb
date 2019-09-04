@@ -5,10 +5,10 @@ Rails.application.routes.draw do
   post 'api/v1/signup' => 'api/v1/users#create'
   delete 'api/v1/logout' => 'api/v1/sessions#destroy'
   
-  
+
   namespace :api do
     namespace :v1 do
-      resources :playercard 
+      resources :player_card
       resources :users
     end
   end
