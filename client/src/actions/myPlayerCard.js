@@ -71,7 +71,7 @@ export const createPlayerCard = (playerCardData, history) => {
                     dispatch(resetPlayerCardForm())
                     history.push(`/playercard/${resp.data.id}`)
                  }
-                })
+                }) 
                 .catch(console.log)
         
     }

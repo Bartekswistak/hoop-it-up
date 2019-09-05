@@ -25,14 +25,14 @@ render(){
           <header className="App-header"> 
             <Router>
             <Home/>
-            {loggedIn ? <NavBar/> : null}
-              <Route exact path='/login' component={Login}/> 
+            {loggedIn ? <NavBar/> : <AppHeader/>}
+              {/* <Route exact path='/login' component={Login}/> 
               <Route exact path='/signup' render={(props) => <Signup history={props.history}/>}/>   
-              <Route exact path='/' render={(props) => loggedIn ? <NewPlayerCard {...props}/> : <AppHeader {...props}/>}/> 
-              {/* <Route exact path='/playercard/:id' render={props => {
+              <Route exact path='/' render={(props) => loggedIn ? <MyPlayerCard {...props}/> : <AppHeader {...props}/>}/>  */}
+              <Route exact path='/playercard/:id' render={props => {
                   const playercard = MyPlayerCard.find(playercard => playercard.id === props.match.params.id)
                   return <MyPlayerCard playercard={playercard} {...props}/> }
-              }/>         */}
+              }/>        
             </Router>
           </header>
         </div>

@@ -4,12 +4,12 @@ import {Link} from 'react-router-dom'
 
 class MyPlayerCard extends React.Component {
 
-//     constructor(){
-//         super()
-//         this.state = {
-//             votes: {}
-//         }
-//     }
+    // constructor(){
+    //     super()
+    //     this.state = {
+    //         playercard: {}
+    //     }
+    // }
 
 
 //     componentDidMount() {

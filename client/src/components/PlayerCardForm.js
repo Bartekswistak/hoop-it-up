@@ -1,47 +1,76 @@
 import React from 'react'
-import {connect} from 'react-redux'
-import {updatePlayerCardForm} from '../actions/playerCardForm.js'
+import { connect } from 'react-redux'
+import { updatePlayerCardForm } from '../actions/playerCardForm.js'
+import { createPlayerCard } from '../actions/myPlayerCard.js'
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
 
-const PlayerCardForm = ({formData, history, updatePlayerCardForm, userId, playercard, handleSubmit}) => {
+const PlayerCardForm = ({formData, history, updatePlayerCardForm, userId, playercard}) => {
 
-  const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
+  // const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
   const playerCardId = playercard ? playercard.id : null
 
-    const handleChange = (event) => {
+    const handleChange = event => {
         const {name, value} = event.target
-        updatePlayerCardForm(name, value)
+        const updatePlayerCardInfo = {
+          ...formData,
+          [name]: value
+        }
+        updatePlayerCardForm(updatePlayerCardInfo)
+    }
+
+    const handleSubmit = event => {
+      event.preventDefault()
+      createPlayerCard(formData, history)
+      debugger
     }
 
  return ( 
     
     <Container className="playerCardForm"> 
-      <Form onSubmit={event => handleSubmit(event, formData, userId)}>
+      <Form onSubmit={handleSubmit}>
         <Form.Group controlId="formPlayerNickname">
           <Form.Label>What is your nickname on the court?</Form.Label>
-            <Form.Control type="textarea" name="playerNickname" onChange={handleChange}/><br/>
+            <Form.Control 
+              type="text" 
+              name="playerNickname" 
+              onChange={handleChange}/><br/>
          </Form.Group>
 
         <Form.Group controlId="formPlayerHeight">
-           <Form.Label>How tall are you?</Form.Label>
-              <Form.Control type="textarea" name="playerHeightFeet" onChange={handleChange}/> Feet
-              <Form.Control type="textarea" name="playerHeightInches" onChange={handleChange}/>Inches<br/>
+          <Form.Label>How tall are you?</Form.Label>
+            <Form.Control 
+              type="text" 
+              name="playerHeightFeet" 
+              onChange={handleChange}/> Feet
+            <Form.Control 
+              type="text" 
+              name="playerHeightInches" 
+              onChange={handleChange}/>Inches<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerWeight">
-         <Form.Label>How much do you weigh?</Form.Label>
-           <Form.Control type="textarea" name="playerWeight" onChange={handleChange}/>Lbs<br/>
+          <Form.Label>How much do you weigh?</Form.Label>
+            <Form.Control 
+              type="text" 
+              name="playerWeight" 
+              onChange={handleChange}/>Lbs<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerAge">
-         <Form.Label>How old are you?</Form.Label>
-           <Form.Control type="textarea" name="playerAge" onChange={handleChange}/><br/>
+          <Form.Label>How old are you?</Form.Label>
+            <Form.Control 
+              type="text" 
+              name="playerAge" 
+              onChange={handleChange}/><br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerFavPlayer">
-         <Form.Label>Who is your favorite basketball player?</Form.Label>
-           <Form.Control type="textarea" name="playerFavPlayer" onChange={handleChange}/><br/>
+          <Form.Label>Who is your favorite basketball player?</Form.Label>
+            <Form.Control 
+              type="text" 
+              name="playerFavPlayer" 
+              onChange={handleChange}/><br/>
         </Form.Group>
         <Form.Control type="submit" value={"Create Player Card"} />
       </Form>
@@ -56,4 +85,4 @@ const mapStateToProps = (state) => {
     }
 }
 
-export default connect(mapStateToProps, {updatePlayerCardForm})(PlayerCardForm)
+export default connect(mapStateToProps, {updatePlayerCardForm, createPlayerCard})(PlayerCardForm)

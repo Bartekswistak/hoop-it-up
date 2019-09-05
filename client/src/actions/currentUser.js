@@ -1,5 +1,6 @@
 import { resetLoginForm } from './loginForm.js'
 import { resetSignupForm } from './signupForm.js'
+import { getMyPlayerCard } from './myPlayerCard.js'
 
 export const setCurrentUser = (user) => {
     return {
@@ -30,7 +31,7 @@ export const login = (credentials, history) => {
             alert(user.error)
         } else {
             dispatch(setCurrentUser(user.data))
-            // dispatch(getMyEntries())
+            dispatch(getMyPlayerCard())
             dispatch(resetLoginForm())
             history.push('/')
         }
@@ -63,7 +64,7 @@ export const getCurrentUser = () => {
             alert(user.error)
         } else {
              dispatch(setCurrentUser(user.data))
-            // dispatch(getMyEntries())
+             dispatch(getMyPlayerCard())
         }
     }).catch(console.log)
   }
