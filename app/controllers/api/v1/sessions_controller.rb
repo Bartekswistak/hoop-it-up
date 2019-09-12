@@ -26,9 +26,9 @@ class Api::V1::SessionsController < ApplicationController
     def get_current_user
         if logged_in?
             render json: UserSerializer.new(current_user)
-       else
+        else
         render json: {
-            error: "Log In To Continue"
+            # error: "Log In To Continue"
         }
        end
     end

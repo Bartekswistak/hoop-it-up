@@ -4,85 +4,135 @@ import { updatePlayerCardForm } from '../actions/playerCardForm.js'
 import { createPlayerCard } from '../actions/myPlayerCard.js'
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
+import { withRouter } from 'react-router-dom';
 
-const PlayerCardForm = ({formData, history, updatePlayerCardForm, userId, playercard}) => {
+class PlayerCardForm extends React.Component {
 
-  // const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
-  const playerCardId = playercard ? playercard.id : null
+  state = {
+    playerNickname: "",
+    playerHeightFeet: "",
+    playerHeightInches: "",
+    playerAge: "",
+    playerWeight: "",
+    playerFavPlayer: ""
+  }
 
-    const handleChange = event => {
-        const {name, value} = event.target
-        const updatePlayerCardInfo = {
-          ...formData,
-          [name]: value
-        }
-        updatePlayerCardForm(updatePlayerCardInfo)
-    }
+  handleChange = (event) => {
+    this.setState({
+      [event.target.name]: event.target.value
+    })
+  }
 
-    const handleSubmit = event => {
-      event.preventDefault()
-      createPlayerCard(formData, history)
-      debugger
-    }
+  handleSubmit = (event)=> {
+    event.preventDefault()
+    let userId = this.props.match.params.id
+    this.props.createPlayerCard(this.state, userId)
+    this.props.history.push(`/player_card/${userId}`)
+    this.setState({
+      playerNickname: "",
+      playerHeightFeet: "",
+      playerHeightInches: "",
+      playerAge: "",
+      playerWeight: "",
+      playerFavPlayer: ""
+    })
+    
+  }
+
+
+// const PlayerCardForm = ({formData, history, updatePlayerCardForm, createPlayerCard, userId, handleSubmit, playercard}) => {
+
+//   const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
+//   const playerCardId = playercard ? playercard.id : null
+
+    // const handleChange = event => {
+    //     const {name, value} = event.target
+    //     const updatePlayerCardInfo = {
+    //       ...formData,
+    //       [name]: value
+    //     }
+    //     updatePlayerCardForm(updatePlayerCardInfo)
+    //     console.log(updatePlayerCardInfo)
+    // }
+
+  
+    // const handleSubmit = event => {
+    //   event.preventDefault()
+    //   createPlayerCard(formData, history)
+    //   //  debugger
+    // }
+    
+
+    render(){
 
  return ( 
     
     <Container className="playerCardForm"> 
-      <Form onSubmit={handleSubmit}>
+      <Form onSubmit={this.handleSubmit}>        
         <Form.Group controlId="formPlayerNickname">
           <Form.Label>What is your nickname on the court?</Form.Label>
             <Form.Control 
-              type="text" 
+              type="text"
+              value={this.state.playerNickname}
               name="playerNickname" 
-              onChange={handleChange}/><br/>
+              onChange={this.handleChange}/><br/>
          </Form.Group>
 
         <Form.Group controlId="formPlayerHeight">
           <Form.Label>How tall are you?</Form.Label>
             <Form.Control 
-              type="text" 
+              type="text"
+              value={this.state.playerHeightFeet}
               name="playerHeightFeet" 
-              onChange={handleChange}/> Feet
+              onChange={this.handleChange}/> Feet
             <Form.Control 
               type="text" 
+              value={this.state.playerHeightInches}
               name="playerHeightInches" 
-              onChange={handleChange}/>Inches<br/>
+              onChange={this.handleChange}/>Inches<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerWeight">
           <Form.Label>How much do you weigh?</Form.Label>
             <Form.Control 
               type="text" 
+              value={this.state.playerWeight}
               name="playerWeight" 
-              onChange={handleChange}/>Lbs<br/>
+              onChange={this.handleChange}/>Lbs<br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerAge">
           <Form.Label>How old are you?</Form.Label>
             <Form.Control 
-              type="text" 
+              type="text"
+              value={this.state.playerAge} 
               name="playerAge" 
-              onChange={handleChange}/><br/>
+              onChange={this.handleChange}/><br/>
         </Form.Group>
 
         <Form.Group controlId="formPlayerFavPlayer">
           <Form.Label>Who is your favorite basketball player?</Form.Label>
             <Form.Control 
               type="text" 
+              value={this.state.playerFavPlayer}
               name="playerFavPlayer" 
-              onChange={handleChange}/><br/>
+              onChange={this.handleChange}/><br/>
         </Form.Group>
         <Form.Control type="submit" value={"Create Player Card"} />
       </Form>
     </Container> 
      )};
 
-const mapStateToProps = (state) => {
-    const userId = state.currentUser ? state.currentUser.id : ""
-    return {
-      formData: state.playerCardForm,
-      userId
-    }
-}
+// const mapStateToProps = (state) => {
+//     const userId = state.currentUser ? state.currentUser.id : ""
+//     return {
+//       formData: state.playerCardForm,
+//       userId
+//     }
+// }
 
-export default connect(mapStateToProps, {updatePlayerCardForm, createPlayerCard})(PlayerCardForm)
+// export default connect(mapStateToProps, {updatePlayerCardForm, createPlayerCard})(PlayerCardForm)
+
+    }
+
+    export default withRouter(connect(null, {createPlayerCard})(PlayerCardForm))

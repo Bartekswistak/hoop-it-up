@@ -24,7 +24,7 @@ export const addPlayerCard = (playercard) => {
 
 export const getMyPlayerCard = () => {
     return dispatch => {
-        return fetch('http://localhost:3000/api/v1/playercard', {
+        return fetch(`http://localhost:3000/api/v1/playercard`, {
             credentials: "include",
             method: "GET",
             headers: {
@@ -33,7 +33,7 @@ export const getMyPlayerCard = () => {
     }).then(res => res.json())
     .then(playercard => {
         if(playercard.error) {
-            alert(playercard.error)
+            // alert(playercard.error)      This was the Not Found Error upon logging in
         } else {
             dispatch(setPlayerCard(playercard.data))
         }
@@ -45,16 +45,16 @@ export const createPlayerCard = (playerCardData, history) => {
     return dispatch => {
         const sendablePlayerCardData = {
             playercard: {
-                player_nickname: playerCardData.formData.playerNickname,
-                player_height_in_feet: playerCardData.formData.playerHeightFeet,
-                player_height_in_inches: playerCardData.formData.playerHeightInches,
-                player_weight: playerCardData.formData.playerWeight,
-                player_age: playerCardData.formData.playerAge,
-                player_fav_player: playerCardData.formData.playerFavPlayer,
+                player_nickname: playerCardData.playerNickname,
+                player_height_in_feet: playerCardData.playerHeightFeet,
+                player_height_in_inches: playerCardData.playerHeightInches,
+                player_weight: playerCardData.playerWeight,
+                player_age: playerCardData.playerAge,
+                player_fav_player: playerCardData.playerFavPlayer,
                 user_id: playerCardData.userId
             }
         }
-        return fetch("http://localhost:3000/api/v1/playercard", {
+        return fetch(`http://localhost:3000/api/v1/playercard/${playerCardData.userId}`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -81,12 +81,12 @@ export const updatePlayerCard = (playerCardData, history) => {
     return dispatch => {
         const sendablePlayerCardData = {
             playercard: {
-                player_nickname: playerCardData.formData.playerNickname,
-                player_height_in_feet: playerCardData.formData.playerHeightFeet,
-                player_height_in_inches: playerCardData.formData.playerHeightInches,
-                player_weight: playerCardData.formData.playerWeight,
-                player_age: playerCardData.formData.playerAge,
-                player_fav_player: playerCardData.formData.playerFavPlayer,
+                player_nickname: playerCardData.playerNickname,
+                player_height_in_feet: playerCardData.playerHeightFeet,
+                player_height_in_inches: playerCardData.playerHeightInches,
+                player_weight: playerCardData.playerWeight,
+                player_age: playerCardData.playerAge,
+                player_fav_player: playerCardData.playerFavPlayer,
                 user_id: playerCardData.userId
             }
         }

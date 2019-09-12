@@ -6,9 +6,9 @@ import PlayerCardForm from './PlayerCardForm.js';
 
 const NewPlayerCard = ({history, createPlayerCard}) => {
 
-    const handleSubmit = (event, formData, userId) => {
+    const handleSubmit = (event, userId) => {
         event.preventDefault()
-        createPlayerCard({formData, userId}, history)
+        createPlayerCard({ userId}, history)
     }
     
     return <PlayerCardForm history={history} handleSubmit={handleSubmit}/>

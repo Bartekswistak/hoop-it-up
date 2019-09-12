@@ -12,6 +12,18 @@
         end
     end
 
+    def show
+        if logged_in?
+            @playercard = current_user.playercard
+            render json: PlayerCardSerializer.new(@playercard)
+           
+            else 
+                render json: {
+                    error: "You must be logged in to see your player card."
+                }
+            end
+    end
+
 
     def create 
         @playercard = PlayerCard.new(playercard_params)
