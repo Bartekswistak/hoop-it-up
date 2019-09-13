@@ -1,4 +1,5 @@
 import React from 'react'
+import PlayerCardForm from "./PlayerCardForm.js"
 
 const PlayerCard = ({playerCard}) => {
     return(
@@ -13,7 +14,7 @@ const PlayerCard = ({playerCard}) => {
           </ul>
         </div> 
 
-        : null
+        : <PlayerCardForm/>
     )
 }
 

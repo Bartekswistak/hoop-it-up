@@ -3,7 +3,7 @@ import {resetPlayerCardForm} from './playerCardForm.js'
 export const setPlayerCard = (playercard) => {
     return {
         type: "SET_PLAYERCARD",
-         playercard
+         payload: playercard
     }
 }
 
@@ -18,13 +18,13 @@ export const addPlayerCard = (playercard) => {
     
     return {
         type: "ADD_PLAYERCARD",
-        playercard
+        payload: playercard
     }
 }
 
 export const getMyPlayerCard = () => {
     return dispatch => {
-        return fetch(`http://localhost:3000/api/v1/playercard`, {
+        return fetch(`http://localhost:3000/api/v1/player_card`, {
             credentials: "include",
             method: "GET",
             headers: {
@@ -41,7 +41,7 @@ export const getMyPlayerCard = () => {
   }
 }
 
-export const createPlayerCard = (playerCardData, history) => {
+export const createPlayerCard = (playerCardData) => {
     return dispatch => {
         const sendablePlayerCardData = {
             playercard: {
@@ -54,7 +54,7 @@ export const createPlayerCard = (playerCardData, history) => {
                 user_id: playerCardData.userId
             }
         }
-        return fetch(`http://localhost:3000/api/v1/playercard/${playerCardData.userId}`, {
+        return fetch(`http://localhost:3000/api/v1/player_card`, {
             credentials: "include",
             method: "POST",
             headers: {
@@ -65,11 +65,14 @@ export const createPlayerCard = (playerCardData, history) => {
                 .then(r => r.json())
                 .then(resp => {
                 if (resp.error) {
-                    alert(resp.error)
+                    
+                    // alert(resp.error)
                 } else {
-                    dispatch(addPlayerCard(resp.data))
+                    dispatch(addPlayerCard(resp))
                     dispatch(resetPlayerCardForm())
-                    history.push(`/playercard/${resp.data.id}`)
+                    debugger
+                    // history.push(`/playercard/${resp.data.id}`)
+                
                  }
                 }) 
                 .catch(console.log)
@@ -90,7 +93,7 @@ export const updatePlayerCard = (playerCardData, history) => {
                 user_id: playerCardData.userId
             }
         }
-        return fetch(`http://localhost:3000/api/v1/playercard/${playerCardData.userId}`, {
+        return fetch(`http://localhost:3000/api/v1/player_card/${playerCardData.userId}`, {
             credentials: "include",
             method: "PATCH",
             headers: {

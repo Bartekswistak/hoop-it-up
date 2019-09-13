@@ -1,15 +1,17 @@
     class Api::V1::PlayerCardController < ApplicationController
 
     def index      
-        if logged_in?
-        @playercard = current_user.playercard
-        render json: PlayerCardSerializer.new(@playercard)
+        @playercards = PlayerCard.all 
+        render json: @playercards
+        # if logged_in?
+        # @playercard = current_user.playercard
+        # render json: PlayerCardSerializer.new(@playercard)
        
-        else 
-            render json: {
-                error: "You must be logged in to see your player card."
-            }
-        end
+        # else 
+        #     render json: {
+        #         error: "You must be logged in to see your player card."
+        #     }
+        # end
     end
 
     def show
@@ -26,15 +28,16 @@
 
 
     def create 
-        @playercard = PlayerCard.new(playercard_params)
-        if @playercard.save
-            render json: PlayerCardSerializer.new(@playercard), status: :created
-        else
-            render json: {
+            @playercard = PlayerCard.new(playercard_params)
+                if @playercard.save
+                    render json: @playercard
+                    # PlayerCardSerializer.new(@playercard), status: :created
+                else
+                render json: {
 
-               error: @playercard.errors.full_messages.to_sentence, status: :unproccessable_entity
-            }
-        end
+                    error: @playercard.errors.full_messages.to_sentence, status: :unproccessable_entity
+                }
+                end
 
     end
 
