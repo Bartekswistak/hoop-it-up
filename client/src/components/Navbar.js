@@ -1,8 +1,8 @@
 import React from 'react'
 import {connect} from 'react-redux'
-import {NavLink, Route} from 'react-router-dom'
+import {Route} from 'react-router-dom'
 import Logout from './Logout.js'
-import PlayerCard from './PlayerCard.js'
+import PlayerCardContainer from '../containers/PlayerCardContainer.js'
 
  const NavBar = ({currentUser}) => {
 
@@ -10,8 +10,8 @@ import PlayerCard from './PlayerCard.js'
     
        <div className="NavBar">
        <h3 className="navlink">Welcome {currentUser.attributes.username}</h3>
-            <NavLink exact className="active navlink" to="/myplayercard"> My PlayerCard </NavLink>
-              <Route path='/myplayercard' component ={PlayerCard}/>
+            
+            <Route  component ={PlayerCardContainer}/>
             {!!currentUser ? <Logout/> : null}
        </div>
     )

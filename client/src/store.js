@@ -7,7 +7,7 @@ import playerCardForm from './reducers/playerCardForm.js'
 import thunk from 'redux-thunk'
 
 const reducer = combineReducers({
-    currentUser: currentUser,
+    currentUser,
     loginForm,
     signupForm,
     myPlayerCard,

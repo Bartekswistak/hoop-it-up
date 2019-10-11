@@ -15,23 +15,25 @@
     end
 
     def show
-        if logged_in?
-            @playercard = current_user.playercard
-            render json: PlayerCardSerializer.new(@playercard)
+        @playercard = PlayerCard.find(params[:id])
+        render json: @playercard
+            
+        # @playercard = current_user.playercard
+            
            
-            else 
-                render json: {
-                    error: "You must be logged in to see your player card."
-                }
-            end
+            # else 
+            #     render json: {
+            #         error: "You must be logged in to see your player card."
+            #     }
+            # end
     end
 
 
     def create 
             @playercard = PlayerCard.new(playercard_params)
                 if @playercard.save
-                    render json: @playercard
-                    # PlayerCardSerializer.new(@playercard), status: :created
+                    # render json: @playercard
+                    render json: PlayerCardSerializer.new(@playercard), status: :created
                 else
                 render json: {
 

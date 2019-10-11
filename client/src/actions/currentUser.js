@@ -33,7 +33,7 @@ export const login = (credentials, history) => {
             dispatch(setCurrentUser(user.data))
             dispatch(getMyPlayerCard())
             dispatch(resetLoginForm())
-            history.push('/')
+            history.push(`/user/${user.data.id}`)
         }
     }).catch(console.log)
   }
@@ -42,7 +42,6 @@ export const login = (credentials, history) => {
 export const logout = () => {
     return dispatch => {
         dispatch(clearCurrentUser())
-        // dispatch(clearEntries())
         return fetch('http://localhost:3000/api/v1/logout', {
             credentials: "include",
             method: "DELETE"    

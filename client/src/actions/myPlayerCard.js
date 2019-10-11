@@ -22,7 +22,7 @@ export const addPlayerCard = (playercard) => {
     }
 }
 
-export const getMyPlayerCard = () => {
+export const getMyPlayerCard = (playercard) => {
     return dispatch => {
         return fetch(`http://localhost:3000/api/v1/player_card`, {
             credentials: "include",
@@ -33,15 +33,15 @@ export const getMyPlayerCard = () => {
     }).then(res => res.json())
     .then(playercard => {
         if(playercard.error) {
-            // alert(playercard.error)      This was the Not Found Error upon logging in
+             alert(playercard.error)      
         } else {
-            dispatch(setPlayerCard(playercard.data))
+            dispatch(setPlayerCard(playercard))
         }
     }).catch(console.log)
   }
 }
 
-export const createPlayerCard = (playerCardData) => {
+export const createPlayerCard = (playerCardData, history) => {
     return dispatch => {
         const sendablePlayerCardData = {
             playercard: {
@@ -70,8 +70,7 @@ export const createPlayerCard = (playerCardData) => {
                 } else {
                     dispatch(addPlayerCard(resp))
                     dispatch(resetPlayerCardForm())
-                    debugger
-                    // history.push(`/playercard/${resp.data.id}`)
+                    history.push(`/playercard/${resp.id}`)
                 
                  }
                 }) 

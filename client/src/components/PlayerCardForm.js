@@ -1,6 +1,5 @@
 import React from 'react'
 import { connect } from 'react-redux'
-import { updatePlayerCardForm } from '../actions/playerCardForm.js'
 import { createPlayerCard } from '../actions/myPlayerCard.js'
 import Form from 'react-bootstrap/Form';
 import Container from 'react-bootstrap/Container';
@@ -25,7 +24,7 @@ class PlayerCardForm extends React.Component {
 
   handleSubmit = (event)=> {
     event.preventDefault()
-    let userId = this.props.match.params.id
+    let userId = this.props.location.pathname.split('/')[2]
     this.props.createPlayerCard(this.state, userId)
     this.props.history.push(`/player_card/${userId}`)
     this.setState({
@@ -34,36 +33,14 @@ class PlayerCardForm extends React.Component {
       playerHeightInches: "",
       playerAge: "",
       playerWeight: "",
-      playerFavPlayer: ""
+      playerFavPlayer: "",
+      user_id: userId
     })
     
   }
-
-
-// const PlayerCardForm = ({formData, history, updatePlayerCardForm, createPlayerCard, userId, handleSubmit, playercard}) => {
-
-//   const {playerNickname, playerHeightInches, playerHeightFeet, playerWeight, playerAge, playerFavPlayer} = formData
-//   const playerCardId = playercard ? playercard.id : null
-
-    // const handleChange = event => {
-    //     const {name, value} = event.target
-    //     const updatePlayerCardInfo = {
-    //       ...formData,
-    //       [name]: value
-    //     }
-    //     updatePlayerCardForm(updatePlayerCardInfo)
-    //     console.log(updatePlayerCardInfo)
-    // }
-
   
-    // const handleSubmit = event => {
-    //   event.preventDefault()
-    //   createPlayerCard(formData, history)
-    //   //  debugger
-    // }
-    
 
-    render(){
+render(){
 
  return ( 
     
@@ -121,18 +98,8 @@ class PlayerCardForm extends React.Component {
         <Form.Control type="submit" value={"Create Player Card"} />
       </Form>
     </Container> 
-     )};
+     )
+    };
+  }
 
-// const mapStateToProps = (state) => {
-//     const userId = state.currentUser ? state.currentUser.id : ""
-//     return {
-//       formData: state.playerCardForm,
-//       userId
-//     }
-// }
-
-// export default connect(mapStateToProps, {updatePlayerCardForm, createPlayerCard})(PlayerCardForm)
-
-    }
-
-    export default withRouter(connect(null, {createPlayerCard})(PlayerCardForm))
+  export default withRouter(connect(null, {createPlayerCard})(PlayerCardForm))
