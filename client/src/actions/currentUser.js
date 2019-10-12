@@ -88,7 +88,7 @@ export const signup = (credentials, history) => {
                } else {
                 dispatch(setCurrentUser(user.data))
                 dispatch(resetSignupForm())
-                history.push('/')
+                history.push(`/user/${user.data.id}`)
             }
          }).catch(console.log)
     }

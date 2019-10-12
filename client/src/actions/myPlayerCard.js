@@ -51,7 +51,7 @@ export const createPlayerCard = (playerCardData, history) => {
                 player_weight: playerCardData.playerWeight,
                 player_age: playerCardData.playerAge,
                 player_fav_player: playerCardData.playerFavPlayer,
-                user_id: playerCardData.userId
+                user_id: window.location.pathname.split('/')[2]
             }
         }
         return fetch(`http://localhost:3000/api/v1/player_card`, {
@@ -65,7 +65,7 @@ export const createPlayerCard = (playerCardData, history) => {
                 .then(r => r.json())
                 .then(resp => {
                 if (resp.error) {
-                    
+                    // debugger
                     // alert(resp.error)
                 } else {
                     dispatch(addPlayerCard(resp))
@@ -106,7 +106,7 @@ export const updatePlayerCard = (playerCardData, history) => {
                     alert(resp.error)
                 } else {
                     dispatch(updatePlayerCard(resp.data))
-                    history.push(`/entries/${resp.data.id}`)
+                    history.push(`/playercard/${resp.data.id}`)
                  }
                 })
                 .catch(console.log)

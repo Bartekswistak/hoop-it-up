@@ -102,4 +102,10 @@ render(){
     };
   }
 
-  export default withRouter(connect(null, {createPlayerCard})(PlayerCardForm))
+  const mapStateToProps = (state) => {
+    return {
+      playerCardData: state.playerCardData
+    }
+  }
+
+  export default withRouter(connect( mapStateToProps, {createPlayerCard})(PlayerCardForm))
