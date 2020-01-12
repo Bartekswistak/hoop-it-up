@@ -55,17 +55,7 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.5)
-<<<<<<< HEAD
     erubi (1.9.0)
-=======
-    devise (4.7.0)
-      bcrypt (~> 3.0)
-      orm_adapter (~> 0.1)
-      railties (>= 4.1.0)
-      responders
-      warden (~> 1.2.3)
-    erubi (1.8.0)
->>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
     execjs (2.7.0)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
@@ -81,11 +71,7 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
-<<<<<<< HEAD
     loofah (2.4.0)
-=======
-    loofah (2.3.1)
->>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
