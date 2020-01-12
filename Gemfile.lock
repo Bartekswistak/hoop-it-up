@@ -55,7 +55,17 @@ GEM
     concurrent-ruby (1.1.5)
     connection_pool (2.2.2)
     crass (1.0.5)
+<<<<<<< HEAD
     erubi (1.9.0)
+=======
+    devise (4.7.0)
+      bcrypt (~> 3.0)
+      orm_adapter (~> 0.1)
+      railties (>= 4.1.0)
+      responders
+      warden (~> 1.2.3)
+    erubi (1.8.0)
+>>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
     execjs (2.7.0)
     fast_jsonapi (1.5)
       activesupport (>= 4.2)
@@ -71,7 +81,11 @@ GEM
       rb-fsevent (~> 0.9, >= 0.9.4)
       rb-inotify (~> 0.9, >= 0.9.7)
       ruby_dep (~> 1.2)
+<<<<<<< HEAD
     loofah (2.4.0)
+=======
+    loofah (2.3.1)
+>>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
       crass (~> 1.0.2)
       nokogiri (>= 1.5.9)
     mail (2.7.1)
@@ -84,16 +98,29 @@ GEM
     mini_portile2 (2.4.0)
     minitest (5.14.0)
     msgpack (1.3.1)
+<<<<<<< HEAD
     nio4r (2.5.2)
     nokogiri (1.10.7)
+=======
+    nio4r (2.4.0)
+    nokogiri (1.10.5)
+>>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
       mini_portile2 (~> 2.4.0)
     omniauth (1.9.0)
       hashie (>= 3.4.6, < 3.7.0)
       rack (>= 1.6.2, < 3)
+<<<<<<< HEAD
     puma (3.12.2)
     rack (2.1.1)
     rack-cors (1.1.1)
       rack (>= 2.0.0)
+=======
+    orm_adapter (0.5.0)
+    puma (3.12.1)
+    rack (2.0.8)
+    rack-cors (1.0.5)
+      rack (>= 1.6.0)
+>>>>>>> af79f73d1d0550b34949939ffcced6f63e83b545
     rack-test (1.1.0)
       rack (>= 1.0, < 3)
     rails (5.2.4.1)
